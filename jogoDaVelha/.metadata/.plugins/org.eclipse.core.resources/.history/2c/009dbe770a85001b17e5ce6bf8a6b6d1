@@ -1,0 +1,65 @@
+
+public class JogoDaVelha {
+	private char[][] tabuleiro;
+	
+	public JogoDaVelha(int tamanho) {
+		tabuleiro = new char[tamanho][tamanho];
+	}
+	
+	public boolean verificaDiagonal(char letra){
+		if(tabuleiro[0][0] == letra && tabuleiro[tabuleiro.length-1][tabuleiro.length-1] == letra && tabuleiro[1][1] == letra)
+			return true;
+		else if(tabuleiro[0][tabuleiro.length-1] == letra && tabuleiro[tabuleiro.length-1][0] == letra && tabuleiro[1][1] == letra)
+			return true;
+		return false;
+	}
+	
+	public boolean verificaColuna(char letra) {
+		int cont = 0;
+		for(int i=0;0<tabuleiro.length;i++) {
+			if(tabuleiro[cont][i] == letra && tabuleiro[cont][i] == letra && tabuleiro[cont][i])
+		}
+	}
+	
+	public boolean verificaLinha(char letra) {
+		int cont = 0;
+		for(int linha=0;linha<tabuleiro.length;linha++) {
+				if(cont == tabuleiro.length)
+					return true;
+				else
+					cont = 0;
+			for(int coluna=0;coluna<tabuleiro[linha].length;coluna++) {
+				if(tabuleiro[linha][coluna] == letra)
+					cont++;
+			}
+		}
+		return false;
+	}
+	
+	public boolean realizaJogada(int linha,int coluna,char letra){
+		if(tabuleiro[linha][coluna] == 0 && letra == 'x' || tabuleiro[linha][coluna] == 0 && letra == 'o') {
+			tabuleiro[linha][coluna] = letra;
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean verificaGanhador() {
+		if(verificaDiagonal('x') == true || verificaDiagonal('o') == true)
+			return true;
+		else if(verificaLinha('x') == true || verificaLinha('o') == true)
+			return true;
+		return false;
+	}
+	
+	public void exibeJogo() {
+		for(int linha =0;linha<tabuleiro.length;linha++) {
+			System.out.println();
+			for(int coluna=0;coluna<tabuleiro[linha].length;coluna++) {
+				System.out.print(tabuleiro[linha][coluna]);
+				if(coluna<tabuleiro.length-1)
+				System.out.print('|');
+			}
+		}
+	}
+}

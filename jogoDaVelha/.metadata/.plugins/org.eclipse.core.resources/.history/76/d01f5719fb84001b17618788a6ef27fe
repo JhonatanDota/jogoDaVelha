@@ -1,0 +1,32 @@
+
+public class JogoDaVelha {
+	private char[][] tabuleiro;
+	
+	public JogoDaVelha(int tamanho) {
+		tabuleiro = new char[tamanho][tamanho];
+	}
+	
+	public boolean realizaJogada(int linha,int coluna,char letra){
+		if(tabuleiro[linha][coluna] == 0 && letra == 'x' || letra == 'o') {
+			tabuleiro[linha][coluna] = letra;
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean verificaGanhador() {
+		int contx = 0;
+		int conto = 0;
+		for(int linha=0;linha<tabuleiro.length;linha++) {
+				if(contx == 3)
+					return true;
+				else
+					contx = 0;
+			for(int coluna=0;coluna<tabuleiro[linha].length;coluna++) {
+				if(tabuleiro[linha][coluna] == 'x')
+					contx++;
+			}
+		}
+		return false;
+	}
+}
